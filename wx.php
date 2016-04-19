@@ -36,6 +36,7 @@ class wechatCallbackapiTest
                 $toUsername = $postObj->ToUserName;
                 $keyword = trim($postObj->Content);
 		    	$Event = $postObj->Event;
+			    $EventKey = $postObj->EventKey;
                 $time = time();
                 $textTpl = "<xml>
 							<ToUserName><![CDATA[%s]]></ToUserName>
@@ -45,6 +46,12 @@ class wechatCallbackapiTest
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
 							</xml>";
+			    if($Event=='CLICK' && $EventKey='V1001_TODAY_MUSIC'){
+					$msgType = "text";
+					$contentStr = "欢迎查看天气";
+					$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+					echo $resultStr;
+				}
 			    if($Event == 'subscribe'){
 					$msgType = "text";
 					$contentStr = "欢迎关注";
