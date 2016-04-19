@@ -46,7 +46,7 @@ class wechatCallbackapiTest
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
 							</xml>";
-			    if($Event=='CLICK' && $EventKey='V1001_TODAY_MUSIC'){
+			    if($Event=='click' && $EventKey='V1001_TODAY_MUSIC'){
 					$msgType = "text";
 					$contentStr = "欢迎查看天气";
 					$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
