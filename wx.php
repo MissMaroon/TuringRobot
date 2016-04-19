@@ -52,10 +52,25 @@ class wechatCallbackapiTest
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
 							</xml>";
+				$imgTpl = "	<xml>
+                       	<ToUserName><![CDATA[%s]]></ToUserName>
+						<FromUserName><![CDATA[%s]]></FromUserName>
+						<CreateTime>%s</CreateTime>
+						<MsgType><![CDATA[news]]></MsgType>
+						<ArticleCount>1</ArticleCount>
+						<Articles>
+						<item>
+						<Title><![CDATA[欢迎参加极客学院]]></Title>
+						<Description><![极客学院微信公众平台开发视频教程]]></Description>
+						<PicUrl><![CDATA[http://www.sinaimg.cn/dy/slidenews/4_img/2015_11/704_1575962_849639.jpg]]></PicUrl>
+						<Url><![CDATA[http://www.jikexueyuan.com]]></Url>
+						</item>
+						</Articles>
+						</xml>";
 			    if($Event == "CLICK" and $EventKey == "V1001_TODAY_MUSIC"){
 					$msgType = "text";
 					$contentStr = "欢迎查看天气";
-					$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+					$resultStr = sprintf($imgTpl, $fromUsername, $toUsername, $time);
 					echo $resultStr;
 				}
 			    if($Event == 'subscribe'){
@@ -67,7 +82,7 @@ class wechatCallbackapiTest
 			    //关键字回复
 				if(!empty( $keyword ))
                 {
-              		$msgType = "text";
+              		$msgType = "news";
                 	$contentStr = "hello world!";
                 	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
                 	echo $resultStr;
