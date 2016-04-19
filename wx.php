@@ -6,15 +6,7 @@
 //define your token
 define("TOKEN", "weixin");
 $wechatObj = new wechatCallbackapiTest();
-if($_GET['echostr'])
-{
-    $wechatObj->valid();
-}else
-{
-    $wechatObj->responseMsg();
-}
-
-
+$wechatObj->valid();
 
 class wechatCallbackapiTest
 {
@@ -39,78 +31,40 @@ class wechatCallbackapiTest
                 /* libxml_disable_entity_loader is to prevent XML eXternal Entity Injection,
                    the best way is to check the validity of xml by yourself */
                 libxml_disable_entity_loader(true);
-                $postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
+              	$postObj = simplexml_load_string($postStr, 'SimpleXMLElement', LIBXML_NOCDATA);
                 $fromUsername = $postObj->FromUserName;
                 $toUsername = $postObj->ToUserName;
                 $keyword = trim($postObj->Content);
-                $Event = $postObj->Event;
-                $EventKey = $postObj->EventKey;
-                $MsgType = $postObj->MsgType;
+		    	$Event = $postObj->Event;
+			    $EventKey = $postObj->EventKey;
                 $time = time();
                 $textTpl = "<xml>
-			<ToUserName><![CDATA[%s]]></ToUserName>
-			<FromUserName><![CDATA[%s]]></FromUserName>
-			<CreateTime>%s</CreateTime>
-			<MsgType><![CDATA[%s]]></MsgType>
-			<Content><![CDATA[%s]]></Content>
-			<FuncFlag>0</FuncFlag>
-			</xml>";
-            if($MsgType == "image")
-            {
-                $MsgType = "text";
-                $Content = "您发送了一个图片信息";
-                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $MsgType, $Content);
-                echo $resultStr;
-            }
-
-            if($Event == "CLICK" and $EventKey == "V1001_TODAY_MUSIC")
-            {
-                $MsgType = "text";
-                $Content = "您点击了今日歌曲";
-                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $MsgType, $Content);
-                echo $resultStr;
-            }
-
-            if($Event == "subscribe")
-            {
-                $textTpl = "<xml>
-                <ToUserName><![CDATA[%s]]></ToUserName>
-                <FromUserName><![CDATA[%s]]></FromUserName>
-                <CreateTime>%s</CreateTime>
-                <MsgType><![CDATA[news]]></MsgType>
-                <ArticleCount>1</ArticleCount>
-                <Articles>
-                <item>
-                <Title><![CDATA[欢迎参加极客学院]]></Title> 
-                <Description><![CDATA[极客学院微信公众平台开发视频教程]]></Description>
-                <PicUrl><![CDATA[http://www.sinaimg.cn/dy/slidenews/4_img/2015_11/704_1575962_849639.jpg]]></PicUrl>
-                <Url><![CDATA[http://www.jikexueyuan.com]]></Url>
-                </item>
-                </Articles>
-                </xml>";
-                $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time);
-                echo $resultStr;
-            }
-	if(!empty( $keyword ))
+							<ToUserName><![CDATA[%s]]></ToUserName>
+							<FromUserName><![CDATA[%s]]></FromUserName>
+							<CreateTime>%s</CreateTime>
+							<MsgType><![CDATA[%s]]></MsgType>
+							<Content><![CDATA[%s]]></Content>
+							<FuncFlag>0</FuncFlag>
+							</xml>";
+			    if($Event == "CLICK" and $EventKey == "V1001_TODAY_MUSIC"){
+					$msgType = "text";
+					$contentStr = "欢迎查看天气";
+					$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+					echo $resultStr;
+				}
+			    if($Event == 'subscribe'){
+					$msgType = "text";
+					$contentStr = "欢迎关注";
+					$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+					echo $resultStr;
+				}
+			    //关键字回复
+				if(!empty( $keyword ))
                 {
-                    if($keyword == "你好")
-                        $textTpl = "<xml>
-                        <ToUserName><![CDATA[%s]]></ToUserName>
-                        <FromUserName><![CDATA[%s]]></FromUserName>
-                        <CreateTime>%s</CreateTime>
-                        <MsgType><![CDATA[news]]></MsgType>
-                        <ArticleCount>1</ArticleCount>
-                        <Articles>
-                        <item>
-                        <Title><![CDATA[您发送了你好]]></Title> 
-                        <Description><![CDATA[极客学院微信公众平台关键字回复]]></Description>
-                        <PicUrl><![CDATA[http://www.sinaimg.cn/dy/slidenews/4_img/2015_11/704_1575962_849639.jpg]]></PicUrl>
-                        <Url><![CDATA[http://www.jikexueyuan.com]]></Url>
-                        </item>
-                        </Articles>
-                        </xml>";
-                        $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time);
-                        echo $resultStr;
+              		$msgType = "text";
+                	$contentStr = "hello world!";
+                	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
+                	echo $resultStr;
                 }else{
                 	echo "Input something...";
                 }
