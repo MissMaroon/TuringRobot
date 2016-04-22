@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
   * wechat php test wdf
   */
@@ -60,7 +60,7 @@ class wechatCallbackapiTest
 						<ArticleCount>1</ArticleCount>
 						<Articles>
 						<item>
-						<Title><![CDATA[欢迎参加极客学院]]></Title>
+						<Title><![CDATA[我改标题了啊啊啊啊啊我真的改了]]></Title>
 						<Description><![极客学院微信公众平台开发视频教程]]></Description>
 						<PicUrl><![CDATA[http://www.sinaimg.cn/dy/slidenews/4_img/2015_11/704_1575962_849639.jpg]]></PicUrl>
 						<Url><![CDATA[http://www.jikexueyuan.com]]></Url>
