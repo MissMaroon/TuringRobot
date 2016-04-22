@@ -52,21 +52,7 @@ class wechatCallbackapiTest
 							<Content><![CDATA[%s]]></Content>
 							<FuncFlag>0</FuncFlag>
 							</xml>";
-				$imgTpl = "	<xml>
-                       	<ToUserName><![CDATA[%s]]></ToUserName>
-						<FromUserName><![CDATA[%s]]></FromUserName>
-						<CreateTime>%s</CreateTime>
-						<MsgType><![CDATA[news]]></MsgType>
-						<ArticleCount>1</ArticleCount>
-						<Articles>
-						<item>
-						<Title><![CDATA[我改标题了啊啊啊啊啊我真的改了]]></Title>
-						<Description><![极客学院微信公众平台开发视频教程]]></Description>
-						<PicUrl><![CDATA[http://www.sinaimg.cn/dy/slidenews/4_img/2015_11/704_1575962_849639.jpg]]></PicUrl>
-						<Url><![CDATA[http://www.jikexueyuan.com]]></Url>
-						</item>
-						</Articles>
-						</xml>";
+			 
 			    
 			    if($Event == 'subscribe'){
 					$msgType = "text";
@@ -76,7 +62,7 @@ class wechatCallbackapiTest
 				}
 			    //关键字回复
 				if(!empty( $keyword ))
-                {
+                   {
               		$msgType = "news";
                 	$contentStr = "hello world!";
                 	$resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, $msgType, $contentStr);
