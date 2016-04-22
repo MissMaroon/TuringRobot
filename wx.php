@@ -67,12 +67,7 @@ class wechatCallbackapiTest
 						</item>
 						</Articles>
 						</xml>";
-			    if($Event == "CLICK" and $EventKey == "V1001_TODAY_MUSIC"){
-					$msgType = "text";
-					$contentStr = "欢迎查看天气";
-					$resultStr = sprintf($imgTpl, $fromUsername, $toUsername, $time);
-					echo $resultStr;
-				}
+			    
 			    if($Event == 'subscribe'){
 					$msgType = "text";
 					$contentStr = "欢迎关注";
