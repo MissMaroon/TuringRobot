@@ -1,6 +1,6 @@
 <?php
 /**
-  * wechat php test
+  * wechat php test wdf
   */
 
 //define your token
