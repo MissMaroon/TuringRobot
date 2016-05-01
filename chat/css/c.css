@@ -1,0 +1,113 @@
+*{margin:0;padding:0;}
+body{
+  background:url("../images/bg.jpg");
+  font-size:12px;
+  font-family:"黑体";
+  color:#666;
+}
+.phone{
+  width:322px;  
+  margin:30px auto;    
+}
+.p_top{
+  height:42px;
+  background:url("../images/yulan_phone_top.png")
+}
+.p_info{
+   height:18px;
+   background:url("../images/top.jpg")
+}
+.p_title{
+   text-align:center; 
+   background:#000;
+   border-left:solid 1px white;  
+   border-right:solid 1px white;  
+}
+.p_content{
+   height:500px;     
+   border-left:solid 1px white;  
+   border-right:solid 1px white; 
+   position:relative;
+}
+.p_buttom{
+  height:42px;
+  background:url("../images/yulan_phone_bottom.png")
+}
+.p_input{
+   height:35px;
+   width: 100%;
+   position:absolute;
+   right:0;
+   bottom:0;
+
+}
+.p_text{
+    border:none;
+    outline: none;
+    height:100%;
+    width:75%;
+    float: left;
+    padding-left: 10px;
+}
+.p_btn{
+    border:none;
+    height:100%;
+    width:25%;
+    float: left;
+    outline: none;
+    font-family:"黑体";
+    cursor:pointer;
+
+}
+img{
+    width: 30px;
+    border-radius: 17px;
+}
+.p_msg_left{
+    width: 200px;
+    clear: both;
+}
+.p_msg_right{
+    width: 200px;
+    position: relative;
+    left: 115px;
+    clear: both;
+}
+.p_msg{
+    overflow-y:auto;
+    height:460px;
+}
+::-webkit-scrollbar-track{
+    background-color: #666666;
+}
+::-webkit-scrollbar{
+    width: 5px;
+}
+@media screen and (max-width: 500px) {
+     .p_top{display: none;}
+     .p_info{display: none;}
+     .p_buttom{display: none;}
+     .p_title{border: none}
+     .p_content{border: none}
+}
+.text_div_right{
+    float: right;
+    text-align: right;
+    width: 80%;
+    line-height: 30px;
+    word-wrap:break-word;
+}
+.img_div_right{
+    width:15%;
+    float:right;
+}
+.img_div_left{
+    width:15%;
+    float: left;
+}
+.text_div_left{
+    width: 80%;
+    float: left;
+    line-height: 30px;
+    word-wrap:break-word;
+}
